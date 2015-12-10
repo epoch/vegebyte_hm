@@ -1,58 +1,70 @@
 
-//DRAFT. have barely started
 
+//FRONT END ---------------
+
+//button objects
+var oButton = document.getElementById('origButton');
+var dButton = document.getElementById('destButton');
+
+//text box content
+var orig = document.getElementById('origIn');
+var dest = document.getElementById('destIn');
+
+//functions for button clicks
+var enterOrig = function(){
+	var origDisp = document.getElementById('origDisplay');
+	origDisp.innerHTML = (orig.value);
+}
+var enterDest = function(){
+	var destDisp = document.getElementById('destDisplay');
+	destDisp.innerHTML = (dest.value);
+}
+
+//click listener. calls function when button clicked
+oButton.addEventListener('click', enterOrig);
+dButton.addEventListener('click', enterDest);
+
+//-----------------------
 console.log('** welcome to the journey planner. Enter your origin and destination');
 
+//object containing all stations on the rail network.
+var network = {
+	'Alamein': ['Flinders St', 'Richmond', 'East Richmond', 'Burnley', 'Hawthorn', 'Glenferrie'],
+	'Glen Waverly': ['Flagstaff', 'Melbourne Central', 'Pariament', 'Richmond', 'Kooyong', 'Tooroonga'],
+	'Sandringham': ['Southern Cross', 'Richmond','South Yarra', 'Prahan', 'Windsor']
+}
+
 var origin = 'South Yarra';
-var destination = 'Windsor';
+var destination = 'East Richmond';
 
-//arrays to represent the three lines
-
-//Alamein Line
-var aLine = ['Flinders St', 'Richmond', 'East Richmond', 'Burnley', 'Hawthorn', 'Glenferrie'];
-
-//Glen Waverly Line
-var gwLine = ['Flagstaff', 'Melbourne Central', 'Pariament', 'Richmond', 'Kooyong', 'Tooroonga'];
-
-//Sandringham Line
-var sLine = ['Southern Cross', 'Richmond','South Yarra', 'Prahan', 'Windsor'];
-
-//array containing all stations on the rail network. merge three lines
-//var network = sLine.concat((gwLine.concat(aLine));
-
-//first we find the origin and destination in the network
-//and which lines they are on
-
-// if (aLine.indexOf(origin) === -1 && gwLine.indexOf(origin) === -1 && sLine.indexOf(origin) === -1){
-// 	console.log('Please enter a valid station')
-// }
-// else if ()
-// gwLine.indexOf(origin);
-// sLine.indexOf(origin);
-
-// //solution with object
-// var Network = {
-
-// }
+//object.keys(network) creates an array from the line keys
+// in network object. 1 array element for each line
+var linesArray = Object.keys(network); 
 
 
-//next we find the stations in between the two
-//and store them in an array
-// var findDirections = function (origin, destination){
-// 	var journey = concat()[]
+console.log(origin);
+console.log(destination);
 
-// 	indexOf();
+//function to search network for a station
+var searchLines = function(station){
+	var resultA = network['Alamein'].indexOf(station);
+	if (resultA >=0){
+		console.log(station + ' is on the ' + linesArray[0] + ' line');
+	}
+	var resultGW = network['Glen Waverly'].indexOf(station);
+	if (resultGW >=0){
+		console.log(station + ' is on the ' + linesArray[1] + ' line');
+	}
+	var resultS = network['Sandringham'].indexOf(station);
+	if (resultS >=0){
+		console.log(station + ' is on the ' + linesArray[2] + ' line');
+	}
+	
+}
 
-// 	return journey;
-// }
+searchLines(origin);
+searchLines(destination);
 
-//test case 1 - stations on the same line
-// origin = 'Flinders St';
-// destination = 'Glenferrie';
-
-//test case 2 - O and D on different lines
-// origin = 'Flinders St';
-// destination = 'Prahan';
 
 
 
