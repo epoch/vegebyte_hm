@@ -4,11 +4,8 @@ var alamein = ["Flinders Street","Richmond","East Richmond","Burnley","Hawthorn"
 var glenWaverley = ["Flagstaff","Melbourne Central","Parliament","Richmond","Kooyong","Tooronga"];
 var sandringham = ["Southern Cross","Richmond","South Yarra","Prahran","Windsor"];
 
-var start = "Burnley";
-var end = "Windsor";
-
-// var start = prompt("Where are you boarding?");
-// var end = prompt("Where are you heading?");
+var start = prompt("Where are you boarding?");
+var end = prompt("Where are you heading?");
 
 var alStartIndex = alamein.indexOf(start);
 var alEndIndex = alamein.indexOf(end);
@@ -19,8 +16,8 @@ var glEndIndex = glenWaverley.indexOf(end);
 var saStartIndex = sandringham.indexOf(start);
 var saEndIndex = sandringham.indexOf(end);
 
-// var firstHalf = [];
-// var secondHalf = [];
+var firstHalf = [];
+var secondHalf = [];
 
 var length = function () {
   if (alStartIndex >= 0){
@@ -51,47 +48,49 @@ var length = function () {
 }
 
 var firstTrip = function () {
-  var firstHalf = [];
   if (alStartIndex >= 0){
-      if (alEndIndex > 1){
-        for (var i = alStartIndex; i <= alEndIndex; i++){
-          var trip = firstHalf.push(alamein[i]);
-        } console.log(trip)
+    console.log("hello")
+      if (alStartIndex < 1){
+        for (var i = 0; i <= 1; i++){
+          firstHalf.push(alamein[i]);
+        }
       } else if (alStartIndex > 1){
-        for (var i = alEndIndex; i >= alStartIndex; i--){
-          var trip = firstHalf.push(alamein[i]);
-        } console.log(trip)
+        for (var i = alStartIndex; i >= 1; i--){
+          console.log("hello to you")
+          firstHalf.push(alamein[i]);
+        }
       }
   } else if (glStartIndex >= 0){
-      if (glEndIndex > 3){
-        for (var i = glStartIndex; i <= glEndIndex; i++){
+      if (glStartIndex < 3){
+        for (var i = 0; i <= 3; i++){
           firstHalf.push(glenWaverley[i]);
         }
       } else if (glStartIndex > 3){
-        for (var i = glEndIndex; i >= glStartIndex; i--){
+        for (var i = glStartIndex; i >= 3; i--){
           firstHalf.push(glenWaverley[i]);
         }
       }
   } else if (saStartIndex >= 0){
-      if (saEndIndex > 1){
-        for (var i = saStartIndex; i <= saEndIndex; i++){
+      if (saStartIndex < 1){
+        for (var i = 0; i <= 1; i++){
           firstHalf.push(sandringham[i]);
         }
       } else if (saStartIndex > 1){
-        for (var i = saEndIndex; i >= saStartIndex; i--){
+        for (var i = saStartIndex; i >= 1; i--){
           firstHalf.push(sandringham[i]);
         }
       }
   }
-  return firstHalf
 }
+
+firstTrip ()
+console.log(firstHalf)
 
 
 var secondTrip = function () {
-  var secondHalf = [];
   if (alEndIndex >= 0){
       if (alEndIndex > 1){
-        for (var i = 1; i <= alEndIndex; i++){
+        for (var i = 2; i <= alEndIndex; i++){
           secondHalf.push(alamein[i]);
         }
       } else if (alEndIndex === 0){
@@ -99,17 +98,17 @@ var secondTrip = function () {
       }
   } else if (glEndIndex >=0) {
       if (glEndIndex > 3){
-        for (var i = 3; i <= glEndIndex; i++){
+        for (var i = 4; i <= glEndIndex; i++){
           secondHalf.push(glenWaverley[i]);
         }
       } else if (alEndIndex < 3){
-        for (var i = 3; i >= glEndIndex; i--){
+        for (var i = 2; i >= glEndIndex; i--){
           secondHalf.push(glenWaverley[i]);
         }
       }
   } else if (saEndIndex >= 0){
       if (saEndIndex > 1){
-        for (var i = 1; i <= saEndIndex; i++){
+        for (var i = 2; i <= saEndIndex; i++){
           secondHalf.push(sandringham[i]);
         }
       } else if (saEndIndex === 0){
@@ -119,19 +118,13 @@ var secondTrip = function () {
   return secondHalf
 }
 
-var journey1 = function () {
-  for (var i = 0; i > firstTrip().length; i++) {
-    console.log("Hello" + firstHalf);
-    return firstTrip()[i] + " ===> ";
-  }
-};
+secondTrip ()
+console.log (secondHalf)
 
-var journey2 = function () {
-  for (var i = 0; i > secondTrip().length; i++) {
-    return secondTrip()[i] + " ===> ";
-  }
-};
+var journey1 = firstHalf.join(" ===> ");
 
-var journey = journey1() + " ===> " + journey2();
+var journey2 = secondHalf.join(" ===> ");
+
+var journey = journey1 + " ===> " + journey2
 
 console.log("Your trip is " + length() + " stops in length, passing the following: \n" + journey)
