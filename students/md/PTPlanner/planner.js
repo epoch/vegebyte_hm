@@ -1,12 +1,12 @@
+var inputOrigin = document.getElementById('org-text');
+var inputDest = document.getElementById('dest-text');
+var journeyPlnButton = document.getElementById('journey-path');
 
 var trainLines = [
 	['Flinders Street','Richmond','East Richmond','Burnley','Hawthorn','Glenferrie'],
 	['Flagstaff','Melbourne Central','Parliament','Richmond','Kooyong','Tooronga'],
 	['Southern Cross','Richmond','South Yarra','Prahran','Windsor']
 ];
-
-var Origin = 'Flinders Street';
-var Destination = 'Rhodes';
 
 
 var checkStation = function(Orig,Dest) {
@@ -46,16 +46,19 @@ var col;
 //plan the journey
 function journeyPlan() {
 
-	if(checkStation(Origin,Destination))	{
+	var origin = inputOrigin.value;
+	var destination = inputDest.value;
+
+	if(checkStation(origin,destination))	{
 
 	var rowOrigin;
 	var rowDest;
 
-	rowOrigin= whereIs(Origin);
-	rowDest= whereIs(Destination);
+	rowOrigin= whereIs(origin);
+	rowDest= whereIs(destination);
 
-	var colOrigin = trainLines[rowOrigin].indexOf(Origin);
-	var colDest = trainLines[rowDest].indexOf(Destination);
+	var colOrigin = trainLines[rowOrigin].indexOf(origin);
+	var colDest = trainLines[rowDest].indexOf(destination);
 
 	var nodeOrg = trainLines[rowOrigin].indexOf('Richmond');
 	var nodeDest = trainLines[rowDest].indexOf('Richmond');
@@ -116,8 +119,9 @@ function journeyPlan() {
 				}
 				
 			}
-			console.log(printLine);
-			console.log(path.length-1 + ' stops total.');
+			document.getElementById("journey-plan").innerHTML = printLine;
+			
+			document.getElementById("total-stops").innerHTML = path.length-1 + ' stops total.';
 	}
 	else {
 
@@ -125,6 +129,7 @@ function journeyPlan() {
 	}
 }
 
+journeyPlnButton.addEventListener('click', journeyPlan);
 
 
 
