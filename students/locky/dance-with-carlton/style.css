@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  color: white;
+
+}
+body {
+  background-color: black;
+}
+
+.container {
+  position: relative;
+
+}
+.blue-floor {
+  background-color: blue;
+  position: absolute;
+  top: 556px;
+  width: 100%;
+  height: 200px;
+}
