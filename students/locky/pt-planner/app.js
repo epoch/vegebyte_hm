@@ -1,5 +1,5 @@
-var origin = 'Windsor';
-var destination = 'Glenferrie';
+var origin = 'Richmond';
+var destination = 'Flagstaff';
 var hubStation = 'Richmond';
 
 var alamein = ['Flinders Street','Richmond','East Richmond','Burnley','Hawthorn','Glenferrie'];
