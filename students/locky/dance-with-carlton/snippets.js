@@ -1,11 +1,31 @@
+// variable that sets how many pixels the image moves per interval
+var movePixels = 10;
+// the time in ms between intervals
+var delayMs = 50;
+// intial value of the the intervals
+var danceTimer = null;
+// variable to control the movements of the image back and forth
+var goRight = true;
+
 function catWalk() {
   var img = document.getElementsByTagName('img')[0];
   var currentLeft = parseInt(img.style.left);
   img.style.left = (currentLeft + movePixels) + 'px';
-  if (currentLeft > (window.innerWidth-img.width)) {
-    img.style.left = '0px';
+
+  // move right
+  if (goRight) {
+    img.style.left = (currentLeft + movePixels) + 'px';
+  } else {
+  //move left
+    img.style.left = (currentLeft - movePixels) + 'px';
   }
-}
+
+  if (goRight === true && currentLeft > (window.innerWidth-img.width)) {
+    goRight = false;
+  } else if (goRight === false && currentLeft < 0) {
+    goRight = true;
+  }
+
 
 // var stopStartButton = document.getElementById('stop-start');
 // var speedUp = document.getElementById('dance-faster');

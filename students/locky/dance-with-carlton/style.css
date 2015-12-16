@@ -11,7 +11,7 @@ body {
 
 .container {
   position: relative;
-
+  height: 100vh;
 }
 .blue-floor {
   background-color: blue;
