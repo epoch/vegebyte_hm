@@ -20,6 +20,8 @@ var stopButton = document.getElementById('stop-button');
 function danceWalk() {
   // grabs the left hand offest of the image
   var currentLeft = parseInt(img.style.left);
+  var currentRight = parseInt(img.style.right);
+
   // the new left hand side of the iamge equals the intial values, plus the amount of pixels moved, to get a new currentLeft value.
   img.style.left = (currentLeft + movePixels) + 'px';
   // move right
@@ -30,7 +32,7 @@ function danceWalk() {
     img.style.left = (currentLeft - movePixels) + 'px';
   }
 
-  if (goRight === true && currentLeft > (window.innerWidth-img.width)) {
+  if (goRight === true && currentLeft > (window.innerWidth-(img.width+45))) {
     goRight = false;
   } else if (goRight === false && currentLeft < 0) {
     goRight = true;
@@ -38,7 +40,11 @@ function danceWalk() {
 
 }
 
+var discoLoop = new Audio("beat.wav");
+
 function startDancing() {
+  discoLoop.play();
+  document.getElementById('karate-man').src="karate.gif"
   if (danceTimer !== null) {
     return;
   }
@@ -59,7 +65,9 @@ function danceSlower(){
   console.log(movePixels);
 }
 function stopDancing() {
+  document.getElementById('karate-man').src="still.gif"
   clearInterval(danceTimer);
+  discoLoop.pause();
   danceTimer = null;
   movePixels = 10;
   console.log('stop ' + danceTimer);
