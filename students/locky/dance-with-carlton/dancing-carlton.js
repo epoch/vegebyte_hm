@@ -41,6 +41,7 @@ function danceWalk() {
 }
 
 var discoLoop = new Audio("beat.wav");
+discoLoop.loop = true;
 
 function startDancing() {
   discoLoop.play();
